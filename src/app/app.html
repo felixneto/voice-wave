@@ -1,10 +1,15 @@
 <div class="container">
-<h1>🎤 Voice Wave</h1>
+<h1>CGI Ambrosio GPT</h1>
 
 
 <canvas #canvas width="400" height="200"></canvas>
 
 
-<button (click)="startListening()">Iniciar Voz</button>
-<p *ngIf="listening">Ouvindo...</p>
+@if (listening) {
+    <button (click)="getAudioContext()">Click para parar</button>
+    <div>Ouvindo...</div>
+} @else {
+    <button (click)="getAudioContext()">Click para conversar</button>
+}
+
 </div>
