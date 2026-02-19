@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
@@ -15,7 +15,11 @@ export class App implements OnInit, OnDestroy {
   @ViewChild('waveCanvas') waveCanvas!: ElementRef<HTMLCanvasElement>;
   private animationId: number = 0;
 
-  state: VoiceState = 'listening';
+  state = signal<VoiceState>('listening');
+
+  updateState(newState: VoiceState) {
+    this.state.set(newState);
+  }
 
   private mediaRecorder!: MediaRecorder;
   private audioChunks: Blob[] = [];
@@ -27,7 +31,7 @@ export class App implements OnInit, OnDestroy {
   private silenceThreshold = 10;      // volume threshold
   private silenceDuration = 3000;     // 3 seconds
 
-  constructor(private http: HttpClient, private cd: ChangeDetectorRef) {}
+  constructor(private http: HttpClient) {}
 
   async ngOnInit() {
     await this.initMicrophone();
@@ -67,15 +71,14 @@ export class App implements OnInit, OnDestroy {
 
   //  start recording
   startRecording() {
-    this.state = 'listening';
-    this.cd.detectChanges();
+    this.updateState('listening')
     
     setTimeout(() => {
       this.drawWave();
     });
 
     this.mediaRecorder.start();
-    // this.detectSilence();
+    this.detectSilence();
   }
 
 
@@ -197,8 +200,7 @@ export class App implements OnInit, OnDestroy {
 
   //  handle transcriptin
   handleTranscription(blob: Blob) {
-    this.state = 'processing';
-    this.cd.detectChanges();
+    this.updateState('processing')
 
     const formData = new FormData();
     formData.append('file', blob, 'audio.webm');
@@ -218,8 +220,7 @@ export class App implements OnInit, OnDestroy {
 
   //  text to speech
   speakText(text: string, lang: string) {
-    this.state = 'speaking';
-    this.cd.detectChanges();
+    this.updateState('speaking')
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = lang;

@@ -89,7 +89,7 @@
     39% 35%
   );
 
-  animation: spin1 10.3s cubic-bezier(.55,.05,.67,.19) infinite alternate;
+  animation: spin1 9.3s cubic-bezier(.55,.05,.67,.19) infinite alternate;
   transition: all 0.3s ease;
 }
 
@@ -116,7 +116,7 @@
     50% 30%
   );
 
-  animation: spin2 10.7s cubic-bezier(.33,1,.68,1) infinite alternate-reverse;
+  animation: spin2 9.7s cubic-bezier(.33,1,.68,1) infinite alternate-reverse;
 }
 
 /* Random-feeling rotation + scale wobble */
@@ -163,7 +163,7 @@
 
 
 
-/* LISTENING */
+/* ======== LISTENING ======== */
 
 .wave-container {
   width: 200px;
@@ -186,84 +186,7 @@ canvas {
 }
 
 
-/* PROCESSING */
-/* 
-.ai-core-container {
-    height: 200px;
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    perspective: 1000px;
-}
-
-.ai-core {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    transform-style: preserve-3d;
-    animation: rotateCore 8s linear infinite;
-}
-
-@keyframes rotateCore {
-    0% { transform: rotateX(0deg) rotateY(0deg); }
-    100% { transform: rotateX(360deg) rotateY(360deg); }
-}
-
-.core-glow {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: radial-gradient(circle, #00ffff 0%, #0066ff 40%, transparent 70%);
-    filter: blur(15px);
-    animation: pulseGlow 2s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-    0%, 100% { transform: scale(1); opacity: 0.9; }
-    50% { transform: scale(1.2); opacity: 1; }
-}
-
-.core-ring {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 2px solid rgba(0, 255, 255, 0.6);
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgba(0,255,255,0.7),
-                inset 0 0 20px rgba(0,255,255,0.4);
-}
-
-.ring-1 {
-    transform: rotateX(60deg);
-    animation: spin1 6s linear infinite;
-}
-
-.ring-2 {
-    transform: rotateY(60deg);
-    animation: spin2 8s linear infinite reverse;
-}
-
-.ring-3 {
-    transform: rotateZ(45deg);
-    animation: spin3 10s linear infinite;
-}
-
-@keyframes spin1 {
-    from { transform: rotateX(60deg) rotateZ(0deg); }
-    to { transform: rotateX(60deg) rotateZ(360deg); }
-}
-
-@keyframes spin2 {
-    from { transform: rotateY(60deg) rotateX(0deg); }
-    to { transform: rotateY(60deg) rotateX(360deg); }
-}
-
-@keyframes spin3 {
-    from { transform: rotateZ(45deg) rotateY(0deg); }
-    to { transform: rotateZ(45deg) rotateY(360deg); }
-} */
+/* ======== PROCESSING ======== */
 
 .processing-container {
     display: flex;
@@ -276,20 +199,20 @@ canvas {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(5, 12px);
-    grid-gap: 10px;
+    grid-template-columns: repeat(5, 18px);
+    grid-gap: 18px;
 }
 
 .bar {
-    width: 14px;
-    height: 14px;
+    width: 28px;
+    height: 28px;
     background: linear-gradient(180deg, #00d4ff, #0066ff);
     background: linear-gradient(90deg, #e31937 2%, #a82465 44%, #3c18b4 84%);
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(16, 82, 110, 0.4);
     filter: drop-shadow(0 0 6px #ffffff05)
           drop-shadow(0 0 6px #000000);
-    animation: pulse .7s ease-in-out infinite;
+    animation: pulse .5s ease-in-out infinite;
 }
 
 @keyframes pulse {
