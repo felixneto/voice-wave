@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChild, ElementRef, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
@@ -31,7 +31,7 @@ export class App implements OnInit, OnDestroy {
   private silenceThreshold = 10;      // volume threshold
   private silenceDuration = 3000;     // 3 seconds
 
-  constructor(private http: HttpClient, private cd: ChangeDetectorRef) {}
+  constructor(private http: HttpClient) {}
 
   async ngOnInit() {
     await this.initMicrophone();
